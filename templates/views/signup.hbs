@@ -1,0 +1,75 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Checkers Online</title>
+        <link rel="stylesheet" href="/css/checkers-styles.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="icon" href="/img/favicon.png" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Crete+Round&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        {{>header}}
+        <div class="signup-container">
+            <div class="signup-form">
+                <h1>Sign Up</h1>
+                <form id="signup-form">
+
+                    {{!-- <label for="avatars">Choose an avatar:</label>
+                        <select id="avatars" name="avatars">
+                        <option src="./img/no-image.png" value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="fiat">Fiat</option>
+                        <option value="audi">Audi</option>
+                    </select> --}}
+                    <div>
+                        <p>Choose an avatar:</p>
+                        <div id="avatar-selection">
+                            <img id="no-avatar" class="avatars" src="./img/avatars/no-image.png">
+                            <img id="avatar1" class="avatars" src="./img/avatars/avatar1.png" hidden>
+                            <img id="avatar2" class="avatars" src="./img/avatars/avatar2.png" hidden>
+                            <img id="avatar3" class="avatars" src="./img/avatars/avatar3.png" hidden>
+                            <img id="avatar4" class="avatars" src="./img/avatars/avatar4.png" hidden>
+                            <img id="avatar5" class="avatars" src="./img/avatars/avatar5.png" hidden>
+                            <img id="avatar6" class="avatars" src="./img/avatars/avatar6.png" hidden>
+                            <img id="avatar7" class="avatars" src="./img/avatars/avatar7.png" hidden>
+                            <img id="avatar8" class="avatars" src="./img/avatars/avatar8.png" hidden>
+
+                        </div>
+                    </div><br>
+                    <p>
+                        <label for="nickname">Nickname:</label><br>
+                        <input type="text" id="signup-nickname" name="nickname" placeholder="How does your friends call you?" required><br>
+                    </p>
+                    <p>
+                        <label for="email" class="email-field">Email:</label><br>
+                        <input type="text" id="signup-email" name="email" placeholder="Enter your email" required/><br>
+                    </p>
+                    <p>
+                        <label for="password">Password:</label><br>
+                        <input type="password" id="signup-password" name="password" placeholder="Enter your password" required />
+                    </p>
+                    <p>
+                        <label for="password-confirmation">Password Confirmation:</label><br>
+                        <input type="password" id="password-confirmation" name="password-confirmation" placeholder="Confirm your password" required><br>
+                    </p>
+                    <input type="submit" value="Submit" class="submit-button"/>
+                </form>
+            </div>            
+        </div>
+
+        {{>footer}}
+
+    {{!-- Temporary --}}
+    
+    <a href="/" style="margin-left: 30%;">Home</a>
+
+        <script src="./js/sign-up.js"></script>
+    </body>
+</html>

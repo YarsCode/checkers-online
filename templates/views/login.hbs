@@ -1,0 +1,44 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Checkers Online</title>
+        <link rel="stylesheet" href="/css/checkers-styles.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="icon" href="/img/favicon.png" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Crete+Round&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        {{>header}}
+        <div class="login-container">
+            <div class="login-form">
+                <h1>Login</h1>
+                <form id="login-form">
+                    <p>
+                        <label for="email" class="email-field">Email:</label><br>
+                        <input type="text" id="login-email" name="email" placeholder="Enter your email" required/><br><br>
+                    </p>
+                    <p>
+                        <label for="password">Password:</label><br>
+                        <input type="password" id="login-password" name="password" placeholder="Enter your password" required />
+                    </p>
+                    <input type="submit" value="Submit" class="submit-button"/>
+                </form>
+            </div>            
+        </div>
+
+        {{>footer}}
+
+    {{!-- Temporary --}}
+    
+    <a href="/">Home</a>
+
+        <script src="./js/login.js"></script>
+    </body>
+</html>

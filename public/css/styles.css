@@ -1,0 +1,132 @@
+body {
+    background: rgba(245, 245, 245, 0.788);
+}
+
+header {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 700;
+    margin: auto;
+    padding: 30px;
+    padding-left: 100px;
+    background: linear-gradient( -45deg, rgb(40, 40, 41) 23%, rgb(70, 70, 70) 33%, rgb(170, 170, 170) 50%, rgba(245, 245, 245, 0.623) 65%);
+    width: 100%;
+    min-height: 13vh;
+    /* text-align: left; */
+    /* mix-blend-mode: multiply; */
+}
+
+footer {
+    font-family: 'Caveat', cursive;
+    /* position: fixed; */
+    font-size: 17px;
+    /* float: right; */
+    color: #4e4d43cb;
+    /* margin: 65% 80%; */
+    margin-top: 49%;
+    margin-left: 86%;
+    border-top: 2px solid #dbdbdb;
+    /* border-right: 2px solid #dbdbdb; */
+    /* background: linear-gradient( -45deg, rgb(40, 40, 41) 23%, rgb(70, 70, 70) 33%, rgb(170, 170, 170) 50%, rgba(245, 245, 245, 0.623) 65%); */
+    width: 10%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.sidebar {
+    position: absolute;
+    min-width: 12%;
+    height: 84vh;
+    background: linear-gradient( -45deg, #7f5539 23%, #b08968 33%, #e6ccb2 50%, rgba(245, 245, 245, 0.623) 65%);
+    text-align: center;
+    padding: 20px;
+}
+
+.versus-header {
+    text-align: center;
+    margin: 5% auto auto 10%;
+}
+
+.chat-container {
+    display: flex;
+    /* margin: auto; */
+}
+
+.chat {
+    margin: auto;
+    padding: 30px;
+}
+
+.login-container, .signup-container {
+    display: flex;
+    padding: 20px;
+}
+
+.login-form, .signup-form {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 5% auto;
+    padding: 10px;
+    border-radius: 1em;
+    text-align: center;
+    min-width: 45%;
+    min-height: 30vh;
+    background: linear-gradient( -45deg, rgb(63, 63, 65) 13%, rgb(128, 128, 128) 33%, rgb(170, 170, 170) 50%, rgba(245, 245, 245, 0.623) 70%);
+}
+
+#login-form input {
+    padding: 8px;
+}
+
+/* #avatar-img:hover {
+    transition: ease-in-out 0.8s;
+    margin-right: 60%;
+} */
+
+.avatar-selection {
+    transition: ease 1s;
+    /* width: 30%; */
+    background: white;
+    /* border: 5px solid blue; */
+    /* justify-content:start; */
+    /* float: left; */
+    /* justify-content: flex-start; */
+    /* width: 60px; */
+}
+
+.avatars {
+    padding: 2px;
+    width: 70px;
+    transition: ease 1s;
+    /* justify-content: start; */
+    /* margin-right: 60%; */
+}
+
+.submit-button {
+    width: 27%;
+    height: 15%;
+    margin: 3em;
+    padding: 3%;
+    font-size: large;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.3em;
+    background: linear-gradient( -175deg, rgb(170, 170, 170) 13%, rgb(230, 230, 230) 33%, rgb(224, 224, 224) 50%, rgba(245, 245, 245, 0.788) 65%);
+}
+
+#login-email, #login-password, #signup-email, #signup-password, #signup-nickname, #password-confirmation {
+    margin: 2%;
+    outline-offset: 1px;
+    outline: 1px grey solid;
+    border: 1px white solid;
+    width: 35%;
+}
+/* .header h1 {
+    background: -webkit-linear-gradient(400deg, rgb(255, 255, 255) 10%, rgb(20, 20, 20) 20%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} */
+
+/* @media only screen and (max-width: 400px) {
+    .header {
+        
+    }
+} */
