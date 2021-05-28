@@ -59,9 +59,8 @@ io.on('connection', (socket) => {
 
     socket.emit('countUpdated', count)
 
-    socket.on('increment', (callback) => {
+    socket.on('increment', () => {
         count++
-        callback
         io.emit('countUpdated', count)
     })
 })

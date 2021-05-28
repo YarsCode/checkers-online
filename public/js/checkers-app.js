@@ -1,40 +1,5 @@
 const socket = io()
 
-// socket.on('test', () => {
-//     console.log('wefoweifn');
-// })
-
-// localStorage.setItem('myCat', 'Tom')
-// const cat = localStorage.getItem('myCat')
-// console.log(localStorage);
-
-
-// const justabutton = document.getElementById("justabutton");
-
-// socket.on('countUpdated', (count) => {
-//     console.log('has been updated', count);
-//     // movePiece(fromRow, fromCol, i, j)
-// })
-// justabutton.addEventListener("click", (e) => {
-//     socket.emit('increment')    
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const checkersBoard = document.getElementById("board");
 // console.log(checkersBoard);
 const createEmptyCell = (isWhite) => ({
