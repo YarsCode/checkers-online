@@ -22,7 +22,8 @@
         <div id="board" class="board">
 
         </div>
-
+        {{>chat}}
+        <button id="justabutton">justabutton</button>
         {{>footer}}
 
     {{!-- Temporary --}}
@@ -31,6 +32,8 @@
         {{!-- <script src="/js/checkers-app.js"></script> --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
+        <script type="module" src="/js/game-room.js"></script>
+        <script type="module" src="/js/utils/sockets.js"></script>
         <script src="/js/checkers-app.js"></script>
     </body>
 </html>

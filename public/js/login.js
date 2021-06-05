@@ -1,38 +1,16 @@
+import {userLogin, displayErrorMsg} from './utils/httpRequests.js'
+
+let loggedUser;
+
+loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'))
+// sessionStorage.clear()
+if (loggedUser) {
+    location.href = "/"
+} else {
+    loggedUser = undefined
+}
+
 const loginForm = document.getElementById("login-form");
-
-//   Http Requests
-// _________________
-
-async function userLogin(data) {
-    const user = await fetch("http://localhost:3000/users/login", {
-        method: "POST",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-    }).then((result) => {
-        return result.json();
-    });
-    return user;
-}
-
-function displayErrorMsg (location, message) {
-    const p = document.createElement('p');
-    // if (isUp) {
-        location.removeChild(location.childNodes[0]);
-        location.prepend(p);
-    // }
-    // else {
-        // if (location.childNodes[location.childNodes.length - 1].innerHTML === "Already in cart!")
-        //     location.removeChild(location.childNodes[location.childNodes.length - 1]);
-        // location.appendChild(p);
-    // }
-    p.innerHTML = message;
-    p.style.color = "#9e3a33";
-    p.style.fontWeight = "bold";
-    p.style.fontSize = "1.2rem"
-}
 
 loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -45,6 +23,25 @@ loginForm.addEventListener("submit", async (e) => {
     if (user.status === 400)
         displayErrorMsg(loginForm, "Your email and/or password were incorrect.");
     else {
+        loggedUser = user
+        sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser))
         location.href = "/";
+        // loggedUser = {
+            
+        // }
+        // console.log(loggedUser.user.nickname);
     }
 });
+
+// const user = {
+//     name:'kai',
+//     age: 18
+// }
+// console.log(user);
+// console.log(JSON.stringify(user));
+
+// sessionStorage.setItem('user', JSON.stringify(user))
+// const user2 = sessionStorage.getItem('user')
+// sessionStorage.clear()
+// console.log(JSON.parse(user2));
+// console.log(sessionStorage);

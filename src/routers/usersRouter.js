@@ -1,6 +1,6 @@
 const express = require("express");
-const multer = require("multer");
-const sharp = require("sharp");
+// const multer = require("multer");
+// const sharp = require("sharp");
 const auth = require("../middleware/auth");
 const User = require("../models/userModel");
 const router = new express.Router();
@@ -106,9 +106,9 @@ router.delete("/users/me", auth, async (req, res) => {
 //     }
 // );
 
-router.post("/users/me/avatar", auth, async (req, res) => {
+// router.post("/users/me/avatar", auth, async (req, res) => {
 
-    }
-);
+//     }
+// );
 
 module.exports = router;

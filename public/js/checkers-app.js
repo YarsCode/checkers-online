@@ -1,5 +1,51 @@
 const socket = io()
 
+// socket.on('test', () => {
+//     console.log('wefoweifn');
+// })
+
+// localStorage.setItem('myCat', 'Tom')
+// const cat = localStorage.getItem('myCat')
+// console.log(localStorage);
+
+
+// const justabutton = document.getElementById("justabutton");
+// const rabc = document.getElementById("row-1 col-2");
+
+// socket.on('countUpdated', (count) => {
+//     console.log('has been updated', count, rabc);
+//     // document.removeChild(rabc)
+//     // movePiece(fromRow, fromCol, i, j)
+// })
+// justabutton.addEventListener("click", (e) => {
+//     socket.emit('increment')    
+// });
+
+// console.log(localStorage);
+// const user = localStorage.getItem('loggedUser')
+// console.log(JSON.parse(user));
+
+
+const loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'))
+// localStorage.clear()
+if (!loggedUser) {
+    location.href = "/login"
+} else {
+    document.querySelector(".user-info").style.display = "flex"
+}
+// console.log(loggedUser.user);
+
+
+
+
+
+
+
+
+
+
+
+
 const checkersBoard = document.getElementById("board");
 // console.log(checkersBoard);
 const createEmptyCell = (isWhite) => ({
@@ -52,6 +98,11 @@ function createChecker(addCell, row) {
             break;
         };
 }
+
+// let canProceedGame = false;
+
+
+
 const createBoard = (Board) => {
     let isWhite = true;
     for (let i = 0; i < 8; i++) {
@@ -68,10 +119,7 @@ const createBoard = (Board) => {
                 addEmpty.classList.add("empty-cell");
             }
             BoardUI[i][j] = document.getElementById("row-"+ (i+1) + " col-" + (j+1));
-            socket.on('countUpdated', (count) => {
-
-                addEventListenersToCheckers(i, j);
-            })
+            addEventListenersToCheckers(i, j);
             isWhite = !isWhite;
         };                
     };        
@@ -81,6 +129,11 @@ createBoard(Board);
 let isCheckerSelected, isCrownedThisTurn;
 let fromRow, fromCol, fromCell, toCell;
 let isWhiteTurn = true;
+// socket.emit('turnHandler')
+// socket.on('changeTurns', () => {
+//     isWhiteTurn = !isWhiteTurn
+// })
+console.log(isWhiteTurn);
 let targetPieceRow, targetPieceCol;
 let isTryingToCapture, cellToCapture, mustBeCaptured;
 let cellsToCapture = [], forcedRow = [], forcedCol = [];
@@ -109,7 +162,7 @@ function deselectPiece() {
 }
 function selectPiece(i, j) {
     BoardUI[i][j].children[0].classList.add("selected");
-    fromCell = BoardUI[i][j].children[0];
+    // fromCell = BoardUI[i][j].children[0];
     fromRow = i;
     fromCol = j;
     isCheckerSelected = true;    
@@ -117,6 +170,7 @@ function selectPiece(i, j) {
 function movePiece(fromRow, fromCol, toRow, toCol) {
     Board[toRow][toCol] = Board[fromRow][fromCol];
     Board[fromRow][fromCol] = blackEmptyCell;
+    fromCell = BoardUI[fromRow][fromCol].children[0];
     toCell = BoardUI[toRow][toCol].children[0];
     fromCell.classList.remove("selected");
     BoardUI[toRow][toCol].removeChild(BoardUI[toRow][toCol].children[0])
@@ -166,8 +220,9 @@ function addEventListenersToCheckers(i, j) {
                     //     console.log('has been updated', count);
                     //     // movePiece(fromRow, fromCol, i, j)
                     // })
-                    socket.emit('increment')
-                    // movePiece(fromRow, fromCol, i, j);
+                    // socket.emit('increment')
+                    socket.emit('coordinates', fromRow, fromCol, i, j)
+                    movePiece(fromRow, fromCol, i, j);
                     if ((!isKing(Board, i, j)) && (i === 0 || i === 7))
                         crownPiece(Board[i][j], i, j);
                     if (piecesCapturedThisTurn > 0) {
@@ -437,3 +492,26 @@ function disableAllBoard () {
     for (let i = 0; i < cells.length; i++)
         cells[i].onclick = null;
 }
+
+
+
+const justabutton = document.getElementById("justabutton");
+const rabc = document.getElementById("row-1 col-2");
+
+// socket.emit('test', 9)
+
+socket.on('move', (fromRow, fromCol, toRow, toCol) => {
+    // console.log(a, b, c, d);
+    isWhiteTurn = !isWhiteTurn
+    movePiece(fromRow, fromCol, toRow, toCol);
+})
+
+// socket.emit('bla', () => {
+//     justabutton.addEventListener("click", (e) => {
+//     checkersBoard.removeChild(rabc)
+//     })
+// })
+
+// socket.emit('blu', (hi) => {
+//     console.log('hi');
+// })

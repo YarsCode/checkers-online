@@ -2,7 +2,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Checkers Online</title>
+        <title>Checkers Online - Sign Up</title>
         <link rel="stylesheet" href="/css/checkers-styles.css" />
         <link rel="stylesheet" href="/css/styles.css" />
         <link rel="icon" href="/img/favicon.png" />
@@ -16,6 +16,13 @@
     </head>
     <body>
         {{>header}}
+
+    {{!-- Temporary --}}
+    
+    <a href="/" style="margin-left: 30%;">Home</a>
+
+    {{!-- Temporary --}}
+
         <div class="signup-container">
             <div class="signup-form">
                 <h1>Sign Up</h1>
@@ -42,7 +49,7 @@
                             <img id="avatar8" class="avatars" src="./img/avatars/avatar8.png" hidden>
 
                         </div>
-                    </div><br>
+                    </div>
                     <p>
                         <label for="nickname">Nickname:</label><br>
                         <input type="text" id="signup-nickname" name="nickname" placeholder="How does your friends call you?" required><br>
@@ -56,20 +63,20 @@
                         <input type="password" id="signup-password" name="password" placeholder="Enter your password" required />
                     </p>
                     <p>
-                        <label for="password-confirmation">Password Confirmation:</label><br>
-                        <input type="password" id="password-confirmation" name="password-confirmation" placeholder="Confirm your password" required><br>
+                        <label for="passwordConfirmation">Password Confirmation:</label><br>
+                        <input type="password" id="password-confirmation" name="passwordConfirmation" placeholder="Confirm your password" required><br>
                     </p>
                     <input type="submit" value="Submit" class="submit-button"/>
                 </form>
             </div>            
         </div>
 
+        <div class="login-sign-up-redirection">
+            <p>Already have an account? Login <a href="/login">here.</a></p>            
+        </div>
+
         {{>footer}}
 
-    {{!-- Temporary --}}
-    
-    <a href="/" style="margin-left: 30%;">Home</a>
-
-        <script src="./js/sign-up.js"></script>
+        <script type="module" src="./js/sign-up.js"></script>
     </body>
 </html>

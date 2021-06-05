@@ -2,7 +2,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Checkers Online</title>
+        <title>Checkers Online - Log In</title>
         <link rel="stylesheet" href="/css/checkers-styles.css" />
         <link rel="stylesheet" href="/css/styles.css" />
         <link rel="icon" href="/img/favicon.png" />
@@ -16,6 +16,13 @@
     </head>
     <body>
         {{>header}}
+
+    {{!-- Temporary --}}
+    
+    <a href="/" style="margin-left: 30%;">Home</a>
+
+    {{!-- Temporary --}}
+
         <div class="login-container">
             <div class="login-form">
                 <h1>Login</h1>
@@ -32,13 +39,13 @@
                 </form>
             </div>            
         </div>
+        <div class="login-sign-up-redirection">
+            <p>Don't have an account? Please Sign Up <a href="/sign-up">here.</a></p>
+            
+        </div>
 
         {{>footer}}
 
-    {{!-- Temporary --}}
-    
-    <a href="/">Home</a>
-
-        <script src="./js/login.js"></script>
+        <script type="module" src="./js/login.js"></script>
     </body>
 </html>

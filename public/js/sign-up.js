@@ -1,6 +1,19 @@
+import {userSignup, displayErrorMsg} from './utils/httpRequests.js'
+import {isSignupFormValid} from './utils/signupFormValidator.js'
+
 let avatarImg = document.getElementById("no-avatar");
 const avatarSelection = document.getElementById("avatar-selection");
 const signupForm = document.getElementById("signup-form");
+
+let loggedUser;
+
+loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'))
+// sessionStorage.clear()
+if (loggedUser) {
+    location.href = "/"
+} else {
+    loggedUser = undefined
+}
 
 // Handles avatars
 
@@ -68,35 +81,13 @@ for (let i = 0; i < avatarSelection.children.length; i++) {
 
 // Post request
 
-async function userSignup(data) {
-    const user = await fetch("http://localhost:3000/users", {
-        method: "POST",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-    }).then((result) => {
-        return result.json();
-    });
-    return user;
-}
+
 
 const getAvatar = () => {
     const avatarSelectionArray = Array.from(avatarSelection.children);
     const avatar = avatarSelectionArray.filter((element) => !element.hasAttribute("hidden"));
     return avatar[0].src;
 };
-
-function displayErrorMsg (location, message) {
-    const p = document.createElement('p');
-    location.removeChild(location.childNodes[0]);
-    location.prepend(p);
-    p.innerHTML = message;
-    p.style.color = "#9e3a33";
-    p.style.fontWeight = "bold";
-    p.style.fontSize = "1.2rem"
-}
 
 signupForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -111,11 +102,22 @@ signupForm.addEventListener("submit", async (e) => {
         password: signupForm.password.value,
     };
     // console.log(data);
-    const user = await userSignup(data);
-    // admin = await adminLogin(data);
-    if (user.status === 400)
-        displayErrorMsg(signupForm, "Your email and/or password were incorrect.");
-    else {
-        location.href = "/";
+    if (isSignupFormValid(signupForm, data.email, data.password, signupForm.passwordConfirmation.value)) {
+        const user = await userSignup(data);
+        if (user.name !== "MongoError" && user.code !== 11000) {
+            loggedUser = user
+            sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser))
+            location.href = "/";            
+        } else {
+            displayErrorMsg(signupForm, "Nickname is already in use! Please pick another one.")
+        }
     }
+    // admin = await adminLogin(data);
+    // if (user.status === 400)
+    //     displayErrorMsg(signupForm, "Your email and/or password were incorrect.");
+    // else {
+        // loggedUser = user
+        // sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser))
+        // location.href = "/";
+    // }
 });

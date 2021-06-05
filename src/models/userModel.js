@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema(
     {
         nickname: {
             type: String,
+            unique: true,
             require: true,
             trim: true,
         },
@@ -64,7 +65,7 @@ userSchema.methods.toJSON = function () {
 
     delete userObj.password;
     delete userObj.token;
-    delete userObj.avatar;
+    // delete userObj.avatar;
     
     return userObj;
 };
