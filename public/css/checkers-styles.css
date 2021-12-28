@@ -7,7 +7,8 @@
     border: double 10px rgba(94, 66, 41, 0.76);
     width: 25vw;
     height: 57vh;
-    margin: 5% auto 10% 35%;
+    margin: auto;
+    /* margin: 5% auto 10% 35%; */
     padding: 2px;
     gap: 1px;
     min-height: 57vh;
@@ -66,21 +67,21 @@ button:focus {
 }
 
 @media only screen and (max-width: 400px) {
-    .board {
+    /* .board {
         margin-top: 40%;
         height: 30vh;
         min-height: 28vh;
         min-width: 285px;
-    }
+    } */
 
     .checker {
         font-size: 9px;
     }
 }
 
-@media only screen and (max-height: 850px) {
+/* @media only screen and (max-height: 850px) {
     .board {
-        min-height: 32vh;
-        height: 35vh;
+        min-height: 35vh;
+        height: 55vh;
     }
-}
+} */

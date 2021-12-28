@@ -1,8 +1,22 @@
 <div id="sidebar" class="sidebar">
     <h3>Online Players:</h3>
-    <p>user1</p>
-    <p>user2</p>
-    <p>user3</p>
 </div>
-<script src="/socket.io/socket.io.js"></script>
+
+{{!-- <div id="invite-to-play-button-modal-container" class="invite-to-play-button-modal-container"> --}}
+    {{!-- <h3>Start Game</h3> --}}
+    {{!-- <button id="button1" style="margin: 20rem; position:absolute">Button</button> --}}
+    <div id="game-invitation-dropdown-container" class="game-invitation-dropdown-container">
+        <div id="game-invitation-dropdown" class="game-invitation-dropdown">
+
+            <button></button>
+        </div>
+    </div>
+    <div class="game-invitation-modal" id="game-invitation-modal" style="visibility: hidden;">
+            <div class="game-invitation-modal-content" id="game-invitation-modal-content">
+                <h3 id="invitation-message"></h3>
+                <button id="accept-invitation">Accept</button>
+                <button id="decline-invitation">Decline</button>
+            </div>
+    </div>
+{{!-- </div> --}}
 <script type="module" src="/js/lobby.js"></script>

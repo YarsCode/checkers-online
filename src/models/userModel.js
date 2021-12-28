@@ -78,6 +78,18 @@ userSchema.methods.generateAuthToken = async function () {
     return token;
 };
 
+userSchema.methods.deleteExpiredTokens = async function () {
+    const user = this;
+    user.tokens.forEach(token => {
+        try {
+            jwt.verify(token.token, process.env.JWT_SECRET);                
+        } catch (e) {
+            user.tokens = user.tokens.filter((tokenToDelete) => tokenToDelete.token !== token.token);
+        }
+    });
+    await user.save();
+};
+
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email });
     if (!user) {

@@ -2,6 +2,7 @@ const express = require("express");
 // const multer = require("multer");
 // const sharp = require("sharp");
 const auth = require("../middleware/auth");
+const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const router = new express.Router();
 
@@ -24,6 +25,7 @@ router.post("/users/login", async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password);
         const token = await user.generateAuthToken();
+        user.deleteExpiredTokens();
         res.send({ user, token });
     } catch (error) {
         res.status(400).send({
@@ -55,7 +57,7 @@ router.post("/users/logout-all", auth, async (req, res) => {
 
 router.patch("/users/me", auth, async (req, res) => {
     const updates = Object.keys(req.body);
-    const allowedUpdates = ["nickname", "email", "password", "avatar"];
+    const allowedUpdates = ["nickname", "email", "password", "avatar", "exp"];
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
     if (!isValidOperation) {
         return res.status(400).send({ error: "Invalid updates!" });

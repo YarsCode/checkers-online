@@ -1,5 +1,5 @@
 async function userSignup(data) {
-    const user = await fetch("http://localhost:3000/users", {
+    const user = await fetch("/users", {
         method: "POST",
         mode: "cors",
         headers: {
@@ -13,7 +13,7 @@ async function userSignup(data) {
 }
 
 async function userLogin(data) {
-    const user = await fetch("http://localhost:3000/users/login", {
+    const user = await fetch("/users/login", {
         method: "POST",
         mode: "cors",
         headers: {
@@ -27,7 +27,7 @@ async function userLogin(data) {
 }
 
 function userLogout(user) {
-    fetch("http://localhost:3000/users/logout", {
+    fetch("/users/logout", {
         method: "POST",
         headers: {
             Authorization: `Bearer ${user.token}`,
@@ -40,6 +40,24 @@ function userLogout(user) {
             if (response.message === "Not authenticated") throw new Error();
             location.reload();
         });
+}
+
+function editUser (user, data) {
+    fetch (`/users/me`, {
+        method: 'PATCH',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${user.token}`
+        },
+        body: JSON.stringify(data)
+    })
+    .then((result) => {         
+        return result.json()
+    })
+    .catch((err) => {
+        console.log(err.message);
+      });
 }
 
 function displayErrorMsg(location, message) {
@@ -59,4 +77,4 @@ function displayErrorMsg(location, message) {
     p.style.fontSize = "1.2rem";
 }
 
-export { userSignup, userLogin, userLogout, displayErrorMsg };
+export { userSignup, userLogin, userLogout, editUser, displayErrorMsg };

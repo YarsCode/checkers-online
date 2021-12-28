@@ -6,6 +6,7 @@ const avatarSelection = document.getElementById("avatar-selection");
 const signupForm = document.getElementById("signup-form");
 
 let loggedUser;
+document.body.style.visibility = "visible"
 
 loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'))
 // sessionStorage.clear()
@@ -86,12 +87,12 @@ for (let i = 0; i < avatarSelection.children.length; i++) {
 const getAvatar = () => {
     const avatarSelectionArray = Array.from(avatarSelection.children);
     const avatar = avatarSelectionArray.filter((element) => !element.hasAttribute("hidden"));
-    return avatar[0].src;
+    return avatar[0].src.slice(-24);
 };
 
 signupForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    let avatar = "http://localhost:3000/img/avatars/no-image.png";
+    let avatar = "/img/avatars/no-image.png";
     if (isHidden()) {
         avatar = getAvatar();
     }
@@ -112,12 +113,12 @@ signupForm.addEventListener("submit", async (e) => {
             displayErrorMsg(signupForm, "Nickname is already in use! Please pick another one.")
         }
     }
-    // admin = await adminLogin(data);
-    // if (user.status === 400)
-    //     displayErrorMsg(signupForm, "Your email and/or password were incorrect.");
-    // else {
-        // loggedUser = user
-        // sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser))
-        // location.href = "/";
-    // }
+    admin = await adminLogin(data);
+    if (user.status === 400)
+        displayErrorMsg(signupForm, "Your email and/or password were incorrect.");
+    else {
+        loggedUser = user
+        sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser))
+        location.href = "/";
+    }
 });

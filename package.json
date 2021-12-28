@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js -e js,hbs"
+    "mongodb": "/Users/yars/Documents/MongoDB/bin/mongod --dbpath=/Users/yars/Documents/mongodb-data",
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js -e js,hbs",
+    "start": "env-cmd -f ./config/dev.env node src/index.js -e js,hbs"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +27,8 @@
   "devDependencies": {
     "babel": "^6.23.0",
     "env-cmd": "^10.1.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "ttab": "^0.7.1"
   }
 }

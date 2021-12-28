@@ -1,6 +1,7 @@
 import {userLogin, displayErrorMsg} from './utils/httpRequests.js'
 
 let loggedUser;
+document.body.style.visibility = "visible"
 
 loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'))
 // sessionStorage.clear()

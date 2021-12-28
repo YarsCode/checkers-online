@@ -16,24 +16,27 @@
     </head>
     <body>
         {{>header}}
-        {{>sidebar}}
-        <h2 class="versus-header">Player1 VS. Player2</h2>
-        <a href="/" style="margin-left: 30%;">Home</a>
+        {{!-- {{>sidebar}} --}}
+        <h2 id="versus-header" class="versus-header"></h2>
+        {{!-- <a href="/" style="margin-left: 30%;">Home</a> --}}
         <div id="board" class="board">
 
         </div>
         {{>chat}}
-        <button id="justabutton">justabutton</button>
+        {{!-- <button id="justabutton">justabutton</button> --}}
         {{>footer}}
-
-    {{!-- Temporary --}}
+        <div class="inGame-messages-modal" id="inGame-messages-modal">
+            <div class="inGame-messages-modal-content" id="inGame-messages-modal-content">
+                <h3 id="alert-message"></h3>
+            </div>
+        </div>
     
 
         {{!-- <script src="/js/checkers-app.js"></script> --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
-        <script type="module" src="/js/game-room.js"></script>
         <script type="module" src="/js/utils/sockets.js"></script>
-        <script src="/js/checkers-app.js"></script>
+        <script type="module" src="/js/game-room.js"></script>
+        <script type="module" src="/js/checkers-app.js"></script>
     </body>
 </html>

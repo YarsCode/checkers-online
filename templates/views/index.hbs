@@ -16,27 +16,27 @@
 </head>
 <body>
     {{>header}}
-    {{>sidebar}}
+    <div class="sidebar-chat-container">
+        {{>sidebar}}
 
-    {{!-- <div id="board" class="board">
-
-    </div> --}}
-
-    <div class="chat-container">
-        {{>chat}}
+        <div class="chat-container">
+            {{>chat}}
+        </div>
     </div>
 
-    <div style="margin-left: 90%;">
+    {{!-- <button id="butt">Click Me</button> --}}
+
+    {{!-- <div style="margin-left: 90%;">
         <a href="/game-room">Game room</a>
         <a href="/sign-up">Signup page</a>
-    </div>
+    </div> --}}
     
     {{>footer}}
     
     {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script> --}}
-    <script type="module" src="/js/utils/userInfoUI.js"></script>
-    <script type="module" src="/js/utils/sockets.js"></script>
-    <script type="module" src="/js/lobby.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/js/utils/sockets.js"></script>
+    <script type="module" src="/js/utils/userInfoUI.js"></script>
+    <script type="module" src="/js/lobby.js"></script>
 </body>
 </html>
